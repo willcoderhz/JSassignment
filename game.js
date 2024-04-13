@@ -29,6 +29,11 @@ function game() {
 
   while (playerWins < 5) {
       const playerSelection = prompt("Rock, Paper or Scissors?");
+       if (playerSelection === null) {
+          console.log("Game exited by user.");
+          return;
+       } //Anne's edit
+    
       if (!['rock', 'paper', 'scissors'].includes(playerSelection.toLowerCase())) {
           console.log("Invalid choice, the game will restart. Please select Rock, Paper, or Scissors.");
           playerWins = 0; // Resetting wins if there's an invalid choice.
