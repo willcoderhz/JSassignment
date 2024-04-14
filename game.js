@@ -21,9 +21,9 @@ function capitalizeFirstLetter(string) {
 
 function game() {
     let roundsPlayed = 0, wins = 0, losses = 0, draws = 0;
-    let userInput = prompt('Welcome to a fateful game of Rock, Paper, Scissors against the Demon! Each choice you make affects the fate of the world. Only a victory after FIVE games will save humanity. Please enter your name to begin:');
+    let userInput = prompt('Welcome to a fateful game of Rock, Paper, Scissors against the Demon! Each choice you make affects the fate of the world. Please enter your name to begin:');
     
-    if (!userInput) {
+    if (userInput === null) {
         console.log('Game exited by user. No name entered.');
         return;
     }
@@ -32,12 +32,12 @@ function game() {
     
     while (roundsPlayed < 5) {
         let playerSelection = prompt("Rock, Paper, or Scissors?");
-        if (!playerSelection) {
+        if (playerSelection === null) {
             console.log("Game exited by user.");
             return;
         }
         playerSelection = playerSelection.trim().toLowerCase();
-        const computerSelection = computerPlay().toLowerCase();  // Lowercasing moved here
+        const computerSelection = computerPlay().toLowerCase();
 
         if (!['rock', 'paper', 'scissors'].includes(playerSelection)) {
             console.log("Invalid choice, please select Rock, Paper, or Scissors.");
@@ -55,5 +55,6 @@ function game() {
     let finalMessage = wins > losses ? `Congratulations ${userName}! You've saved the world by defeating the Demon with ${wins} wins!` : losses > wins ? `Alas ${userName}, you lost the game. The world falls to darkness. You had ${losses} losses.` : `Well played ${userName}, but the game ended in a draw. The fate of the world remains undecided.`;
     console.log(finalMessage);
 }
+
 
 game();
